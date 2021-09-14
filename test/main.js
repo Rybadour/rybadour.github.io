@@ -3,7 +3,7 @@ function resize() {
   //outer.style.height = window.innerHeight + "px";
   
   var rect = document.querySelector(".footer").getBoundingClientRect();
-  document.querySelector(".header").innerText = outer.style.height + " -- " + rect.top;
+  document.querySelector(".log").innerText = outer.style.height + " -- " + rect.top;
 }
 
 window.resize = resize;
