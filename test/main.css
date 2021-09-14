@@ -1,23 +1,83 @@
-html, body {
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  height: 2000px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+div.bar {
+  width: 20px;
+  top: 0px;
+}
+
+.fixedpercent {
   position: fixed;
-  height: 100%;
-  margin: 0;
+  height: 99%;
+  background-color: lightsteelblue;
 }
 
-.outer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: red;
-  box-sizing: border-box;
-  position: relative;
+.fixedvh {
+  position: fixed;
+  height: 99vh;
+  background-color: lightskyblue;
 }
 
-.footer {
+.abspercent {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 30px;
-  background-color: blue;
+  height: 99%;
+  background-color: darksalmon;
+}
+
+.absvh {
+  position:absolute;
+  height: 99vh;
+  background-color: coral;
+}
+
+.textfixed {
+  box-sizing: border-box;
+  width: 65vh;
+  background-color: white;
+  opacity: 0.7;
+  height: 20px;
+  padding: 0px 80px;
+  transform: rotate(90deg);
+  transform-origin: left bottom 0;
+}
+
+.textabs {
+  box-sizing: border-box;
+  width: 65vh;
+  background-color: white;
+  opacity: 0.7;
+  height: 20px;
+  padding: 0px 80px;
+  transform: rotate(90deg);
+  transform-origin: left bottom 0;
+}
+
+#consoleContainer {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  height: 100vh;
+  z-index: -1;
+  background-color: lightgrey;
+}
+
+#console {
+  position: absolute;
+  left: 0px;
+  right: 100px;
+}
+.innerHeightLog {
+  position: fixed;
+  right: 100px;
+  width: 180px;
+  height: 20px;
+  background-color: chartreuse;
 }

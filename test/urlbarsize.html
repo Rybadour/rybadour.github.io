@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://bokand.github.io/demo/urlbarsize.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link rel="stylesheet" href="main.css" />
+  <script>
+    const spinner = ['/', '-', '\\', '|'];
+    let spinnerIx = 0;
+    function $(name) {
+      return document.querySelector(name);
+    }
+    function updateText() {
+      $('.fixedpercent .textfixed').innerText = 'percentage-based position:fixed (' + $('.bar.fixedpercent').clientHeight + 'px)';
+      $('.fixedvh .textfixed').innerText = 'viewport-unit position:fixed (' + $('.bar.fixedvh').clientHeight + 'px)';
+      $('.abspercent .textabs').innerText = 'percentage-based position:absolute (' + $('.bar.abspercent').clientHeight + 'px)';
+      $('.absvh .textabs').innerText = 'viewport-unit position:absolute (' + $('.bar.absvh').clientHeight + 'px)';
+      $('.innerHeightLog').innerText = 'innerHeight: ' + window.innerHeight + 'px ' + spinner[spinnerIx];
+      spinnerIx = (spinnerIx+1) % spinner.length;
+    }
+    function resized() {
+      var console = document.getElementById('console');
+      console.innerHTML += "*Resize! window.innerHeight: " + window.innerHeight + ",  documentElement.clientHeight: " + document.documentElement.clientHeight + "<br>";
+      updateText();
+    }
+
+    addEventListener("load", function() {
+      visualViewport.addEventListener('resize', () => {
+        var console = document.getElementById('console');
+        console.innerHTML += "*VV Resize: " + visualViewport.height + " <br>";
+        updateText();
+      });
+      updateText();
+      setInterval(updateText, 500);
+    });
+  </script>
+</head>
+
+<body onresize="resized()">
+
+<div style="right: 0px" class="bar fixedpercent"><div class="textfixed">percentage-based position:fixed (928px)</div></div>
+<div style="right: 25px" class="bar fixedvh"><div class="textfixed">viewport-unit position:fixed (928px)</div></div>
+<div style="right: 50px" class="bar abspercent"><div class="textabs">percentage-based position:absolute (928px)</div></div>
+<div style="right: 75px" class="bar absvh"><div class="textabs">viewport-unit position:absolute (928px)</div></div>
+<div class="innerHeightLog">innerHeight: 937px |</div>
+<div id="consoleContainer">
+  <div><a href="" target="_blank">CLICK ME</a></div>
+  <div id="console">
+  <br>
+    OnResize handler calls will be displayed below with window.innerWidth and documentElement.clientHeight<br><br>
+  *VV Resize: 937 <br>*Resize! window.innerHeight: 1080,  documentElement.clientHeight: 1080<br>*VV Resize: 1080 <br>*Resize! window.innerHeight: 937,  documentElement.clientHeight: 937<br>*VV Resize: 937 <br>*Resize! window.innerHeight: 937,  documentElement.clientHeight: 937<br>*VV Resize: 937 <br></div>
+</div>
+
+
+</body></html>
